@@ -3,13 +3,13 @@
 using UnrealBuildTool;
 using System.Collections.Generic;
 
-public class TestEditorTarget : TargetRules
+public class CUE2EditorTarget : TargetRules
 {
-	public TestEditorTarget(TargetInfo Target) : base(Target)
+	public CUE2EditorTarget(TargetInfo Target) : base(Target)
 	{
 		Type = TargetType.Editor;
 		DefaultBuildSettings = BuildSettingsVersion.V5;
 
-		ExtraModuleNames.AddRange( new string[] { "Test" } );
+		ExtraModuleNames.AddRange( new string[] { "CUE2" } );
 	}
 }

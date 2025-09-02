@@ -9,6 +9,7 @@ UHealthComponent::UHealthComponent()
 	// Set this component to be initialized when the game starts, and to be ticked every frame.  You can turn these features
 	// off to improve performance if you don't need them.
 	PrimaryComponentTick.bCanEverTick = true;
+	CurrentHealth = MaxHealth; //Aquí en el constructor inicializamos la vida
 
 	// ...
 }
@@ -18,7 +19,7 @@ UHealthComponent::UHealthComponent()
 void UHealthComponent::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
 	// ...
 	
 }
@@ -32,49 +33,19 @@ void UHealthComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActo
 	// ...
 }
 
-void UHealthComponent::TakeDamage(float DamageAmount)
+void UHealthComponent::TakeDamage(float damageAmount)
 {
 	if (CurrentHealth <= 0.0f)
 	{
-		return; //Ya esta muerto
+		return; // Ya está muerto
 	}
 
-	CurrentHealth -= DamageAmount;
-	UE_LOG(LogTemp, Warning, TEXT("Se ha recibido %f de daÃ±o. Vida restante: %f"),DamageAmount, CurrentHealth);
+	CurrentHealth -= damageAmount;
+	UE_LOG(LogTemp, Warning, TEXT("Se ha recibido %f de daño. Vida restante: %f"), damageAmount, CurrentHealth);
 
 	if (CurrentHealth <= 0.0f)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("El actor ha muerto"));
+		UE_LOG(LogTemp, Warning, TEXT("El actor ha muerto."));
 	}
 }
-
-void UHealthComponent::Heal(float healAmount)
-{
-	if (CurrentHealth > 0.0f)
-	{
-		CurrentHealth += healAmount;
-	}
-	else
-	{
-		return;
-	}
-
-	if (CurrentHealth == MaxHealth)
-	{
-		return; //No se puede curar
-	}
-}
-
-void UHealthComponent::shield(float shieldAmount)
-{
-	if (CurrentShield <= 0.0f)
-	{
-		CurrentShield += shieldAmount;
-	}
-	if (CurrentShield == MaxShield)
-	{
-		return;
-	}
-}
-
 

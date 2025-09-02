@@ -8,7 +8,7 @@
 
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
-class TEST_API UHealthComponent : public UActorComponent
+class CUE2_API UHealthComponent : public UActorComponent
 {
 	GENERATED_BODY()
 
@@ -17,25 +17,16 @@ public:
 	UHealthComponent();
 
 protected:
-	// Called when the game starts
-	virtual void BeginPlay() override;
-	UPROPERTY(BlueprintReadOnly, Category = "Health")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Health")
 	float MaxHealth = 100.0f;
 	UPROPERTY(BlueprintReadOnly, Category = "Health")
-	float MaxShield = 100.0f;
-	UPROPERTY(BlueprintReadOnly, Category = "Health")
 	float CurrentHealth;
-	UPROPERTY(BlueprintReadOnly, Category = "Health")
-	float CurrentShield;
+	virtual void BeginPlay() override;
+
 public:	
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
-	
-	UFUNCTION(BlueprintCallable, Category = "Health")
-	void TakeDamage(float DamageAmount);
 
 	UFUNCTION(BlueprintCallable, Category = "Health")
-	void Heal(float healAmount);
-	UFUNCTION(BlueprintCallable, Category = "Health")
-	void shield(float shieldAmount);
+	void TakeDamage(float damageAmount);
 };

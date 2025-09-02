@@ -3,13 +3,13 @@
 using UnrealBuildTool;
 using System.Collections.Generic;
 
-public class TestTarget : TargetRules
+public class CUE2Target : TargetRules
 {
-	public TestTarget(TargetInfo Target) : base(Target)
+	public CUE2Target(TargetInfo Target) : base(Target)
 	{
 		Type = TargetType.Game;
 		DefaultBuildSettings = BuildSettingsVersion.V5;
 
-		ExtraModuleNames.AddRange( new string[] { "Test" } );
+		ExtraModuleNames.AddRange( new string[] { "CUE2" } );
 	}
 }
